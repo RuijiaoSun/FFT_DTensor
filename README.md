@@ -17,8 +17,8 @@ Input is a DTensor with any dimension. An example is shown below:
 Output is a DTensor with the same dimension as the input. Users can relayout the output by defining the parameter "final_layout".
 
 ## Parameters
-* axes： sequence of ints, optional
-    Axes over which to compute the FFT. If not given, the last len(s) axes are used, or all axes if s is also not specified. Repeated indices in axes means that the transform over that axis is performed multiple times.
+* axes：Int, optional
+    The number of axes to compute the FFT. If not given, the FFT will happen on all axes.
 
 * norm： {“backward”, “ortho”, “forward”}, optional
     Normalization mode (see numpy.fft). Default is “backward”. Indicates which direction of the forward/backward pair of transforms is scaled and with what normalization factor.
@@ -29,10 +29,7 @@ Output is a DTensor with the same dimension as the input. Users can relayout the
  *  axis1, axis2: {'1', 'None'}, optional
 	 If not given and needed for transpose, the default is "-1", "-2". Demonstrates which axes are used if "output_format" is set as "transposed".
 	 
-  * final_layout: optional
-     Default is the initial layout. You can relayout the output by enabling this parameter.
 
 ## Example
-
-	output = fftnd_dtensor(input, output_format='regular')
+	output = fftnd_dtensor(input, mesh, axes=1, output_format='regular')
 	print(output)
