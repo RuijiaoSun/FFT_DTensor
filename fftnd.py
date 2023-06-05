@@ -58,7 +58,7 @@ def transpose_layout(input, now_layout, mesh, ax1, ax2, reshard=False, init_layo
   # Swap
   dtensor_arrray = tf.experimental.numpy.swapaxes(input, ax1, ax2)
   # relayout
-  dtensor_arrray = relayout_complex(dtensor_arrray, layout = redefine_layout(init_layout, now_layout, mesh, ax1, ax2, reshard=False))
+  dtensor_arrray = relayout_complex(dtensor_arrray, layout = redefine_layout(init_layout, now_layout, mesh, ax1, ax2, reshard=reshard))
   return dtensor_arrray
 
 # The newest version introduces fft2d() to better speed up. The swapaxes and redefining the layout happen twice
@@ -147,7 +147,7 @@ def fftnd(input, mesh, axes=None, norm=None, output_format='transposed', axis1=N
       axis2 = axes[-1]
     output = transpose_layout(output, now_layout, mesh, axis1, axis2)
 
-  return input
+  return output
 
 # Run a test
 mesh = dtensor.create_distributed_mesh(mesh_dims=[('x', 2), ('y', 2), ('z', 2)], device_type=device_type)
