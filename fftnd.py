@@ -169,7 +169,7 @@ print("Real part: \n"+str(tf.math.real(output_fftnd)))
 print("Imag part: \n"+str(tf.math.imag(output_fftnd)))
 
 # Compare the result from our fftnd() and numpy.fft.fft()
-output_np = np.fft.fft(input_np)
+output_np = np.fft.fftn(input_np)
 print("\n---Result from Numpy.FFT---")
 print(output_np)
 
