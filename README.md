@@ -33,3 +33,6 @@ Output is a DTensor with the same dimension as the input. Users can relayout the
 ## Example
 	output = fftnd_dtensor(input, mesh, axes=1, output_format='regular')
 	print(output)
+ 
+## Acknowlegement
+This work is guided by Yu Feng(github: rainwoodman@). 
